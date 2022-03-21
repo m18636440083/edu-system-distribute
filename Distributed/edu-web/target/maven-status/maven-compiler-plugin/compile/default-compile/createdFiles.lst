@@ -1,0 +1,10 @@
+org\yandong\controller\CourseCommentController.class
+org\yandong\controller\FavoriteController.class
+org\yandong\controller\UserController.class
+org\yandong\controller\CourseController.class
+org\yandong\service\CourseService.class
+org\yandong\controller\OrderController.class
+org\yandong\service\CourseCommentFavoriteRecordService.class
+org\yandong\service\OrderService.class
+org\yandong\service\UserService.class
+org\yandong\service\CourseCommentService.class

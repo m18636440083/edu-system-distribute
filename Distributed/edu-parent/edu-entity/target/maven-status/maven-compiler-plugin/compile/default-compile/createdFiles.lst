@@ -1,0 +1,7 @@
+org\yandong\entity\CourseMedia.class
+org\yandong\entity\Course.class
+org\yandong\entity\CourseSection.class
+org\yandong\entity\Teacher.class
+org\yandong\entity\UserVO.class
+org\yandong\entity\User.class
+org\yandong\entity\CourseLesson.class

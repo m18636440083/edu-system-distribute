@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CourseCommentDao">
+
+    <resultMap type="org.yandong.entity.CourseComment" id="CourseCommentMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="courseId" column="course_id" jdbcType="INTEGER"/>
+        <result property="sectionId" column="section_id" jdbcType="INTEGER"/>
+        <result property="lessonId" column="lesson_id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="parentId" column="parent_id" jdbcType="INTEGER"/>
+        <result property="isTop" column="is_top" jdbcType="INTEGER"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="likeCount" column="like_count" jdbcType="INTEGER"/>
+        <result property="isReply" column="is_reply" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDel" column="is_del" jdbcType="INTEGER"/>
+        <result property="lastOperator" column="last_operator" jdbcType="INTEGER"/>
+        <result property="isNotify" column="is_notify" jdbcType="INTEGER"/>
+        <result property="markBelong" column="mark_belong" jdbcType="INTEGER"/>
+        <result property="replied" column="replied" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="saveComment"> insert into `course_comment`(`course_id`, `section_id`, `lesson_id`, `user_id`,
+                                                           `user_name`, `parent_id`, `is_top`, `comment`, `like_count`,
+                                                           `is_reply`, `type`, `status`, `create_time`, `update_time`,
+                                                           `is_del`, `last_operator`, `is_notify`, `mark_belong`,
+                                                           `replied`)
+                              values (#{courseId}, #{sectionId}, #{lessonId}, #{userId}, #{userName}, #{parentId}, 0,
+                                      #{comment}, 0, 0, #{type}, 0, sysdate(), sysdate(), 0, #{lastOperator}, 1, 0,
+                                      0) </insert>
+
+    <select id="getCommentsByCourseId" resultMap="CourseCommentMap"> select *
+                                                               from course_comment
+                                                               where is_del = 0
+                                                                 and course_id = #{courseid}
+                                                               order by is_top desc, like_count desc,
+                                                                        create_time desc limit #{offset},
+                                                                        #{pageSize} </select>
+
+</mapper>
+
